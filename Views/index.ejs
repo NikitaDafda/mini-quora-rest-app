@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Mini Quora</h1>
+
+    <div class="container">
+        <% for (let post of posts) { %>
+            <div class="post-card">
+
+                <h3 class="user">@<%= post.username %></h3>
+                <p class="post-id">ID: <%= post.id %></p>
+
+                <p class="content"><%= post.content %></p>
+
+                <div class="actions">
+                    <a href="/posts/<%=post.id%>" class="view-btn">View</a>
+                    <a href="/posts/<%=post.id%>/edit" class="edit-btn">Edit</a>
+
+                    <form method="POST" action="/posts/<%=post.id%>?_method=DELETE">
+                        <button class="delete-btn">Delete</button>
+                    </form>
+                </div>
+
+            </div>
+        <% } %>
+
+        <a href="/posts/new" class="new-post">+ Create New Post</a>
+    </div>
+</body>
+</html>
+
+
+
